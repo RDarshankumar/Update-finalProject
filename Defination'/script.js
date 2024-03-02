@@ -5,7 +5,7 @@ function fetchDefinition() {
         return;
     }
 
-    // Fetch the definition from an API
+    
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
         .then(response => response.json())
         .then(data => {
