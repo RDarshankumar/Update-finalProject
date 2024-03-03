@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contactusstyle.css" type="text/css">
+
+    <style>
+        * {
+            margin: -1px;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            max-width: 100%;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        h2 {
+            margin: 0px 0px;
+            padding: 0px;
+            border-radius: 5px;
+            color: white;
+            font-size: 30px;
+
+        }
+
+        input {
+            margin: 4px 0px;
+            padding: 5px;
+            border-radius: 5px;
+            border-color: rgb(48, 36, 36);
+            width: 70mm;
+            text-align: center;
+
+        }
+
+        textarea {
+            margin: 8px 0px;
+            padding: 40px;
+            border-radius: 5px;
+            border-color: rgb(48, 36, 36);
+            width: 70mm;
+            text-align: center;
+
+        }
+
+        button {
+            margin: 20px 20px;
+            padding: 8px;
+            border-radius: 2px;
+            border-color: rgb(48, 36, 36);
+            border-style: inset;
+            font-size: 16px;
+
+        }
+
+        button:hover {
+            background-color: rgb(48, 36, 36);
+            color: white;
+            transition: .3s ease-in;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body bgcolor="#a5a5af">
+    <nav>
+        <!-- <input type="checkbox" id="check"> -->
+        <!-- <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label> -->
+
+        <ul>
+            <li class="home"><a href="./index.html">Home</a></li>
+            <li class="dictionary"><a href="./dictionary.html">Dictionary</a></li>
+            <li class="texttovoice"><a href="./texttovoice.html">Text to Voice</a></li>
+            <li class="definition"><a href="./definition.html">Definition</a></li>
+            <li class="singularplural"><a href="./singularplural.html">Singular Plural</a></li>
+            <li class="login"><a href="./login.html">Login</a></li>
+            <li class="signup"><a href="./signup.html">Sign Up</a></li>
+            <li class="contactus"><a href="./contactus.html">Contact Us</a></li>
+        </ul>
+
+    </nav>
+<br><br><br>
+
+    <center><div>
+        <h2>Contact Us</h2>
+
+        <br><br><br>
+
+        <input type="text" id="fullName" placeholder="Full Name" required />
+        <br>
+        <input type="email" id="email_id" placeholder="name@example.com" required />
+        <br><br>
+        <textarea id="message" placeholder="Message" required></textarea>
+        <br><br><br>
+        <button onclick="SendMail()">Send</button>
+    </div>
+
+
+    <br><br><br>
+    <hr>
+
+    <div class="footer">
+    <br>
+
+    
+        <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
+    
+
+    <br>
+
+    <!-- <script src="contactus.js" type="text/javascript"></script> -->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "5a6u90KrRg4GmQnjq"
+            });
+        })();
+    </script>
+
+    <script>
+        function SendMail() {
+            var params = {
+                from_name: document.getElementById("fullName").value,
+                email_id: document.getElementById("email_id").value,
+                message: document.getElementById("message").value
+            }
+            emailjs.send("service_nh2nxbm", "template_kx0wikp", params).then(function (res) {
+                alert("Your message have been submitted! " + res.status);
+            })
+        }
+    </script>
+
+</body>
+
+</html>

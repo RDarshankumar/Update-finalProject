@@ -1,0 +1,175 @@
+* {
+    margin: -1px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif
+}
+
+body {
+    min-height: 100vh;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+    width: 100%;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    line-height: 60px;
+    font-weight: bold;
+    justify-items: center;
+    align-items: center;
+    display: fixed;
+    
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: none;
+    background-color: none;
+    width: 100%;
+    /* display: fixed; */
+}
+
+li.home a {
+    background-color: #0f1626;
+    margin: 0px 0px;
+    padding: 20px 72px;
+    color: white;
+
+}
+
+li.home a:hover{
+    background-color: white;
+    color: black;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.dictionary a {
+    background-color: #f5f5f5;
+    margin: 0px -5px;
+    padding: 20px 30px;
+    color: black;
+}
+
+li.dictionary a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.texttovoice a {
+    background-color: #ab987a;
+    margin: 0px -5px;
+    padding: 20px 20px;
+    color: black;
+}
+
+li.texttovoice a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.definition a {
+    background-color: #ff533d;
+    margin: 0px -5px;
+    padding: 20px 22px;
+    color: black;
+
+}
+
+li.definition a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.singularplural a {
+    background-color: #77c9d4;
+    margin: 0px -5px;
+    padding: 20px 20px;
+    color: black;
+}
+
+li.singularplural a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.login a {
+    background-color: #57bc90;
+    margin: 0px -5px;
+    padding: 20px 40px;
+    color: black;
+}
+
+li.login a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.signup a {
+    background-color: #015249;
+    margin: 0px -5px;
+    padding: 20px 36px;
+    color: white;
+}
+
+li.signup a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+li.contactus a {
+    background-color: #a5a5af;
+    margin: 0px -5px;
+    padding: 20px 20px;
+    color: black;
+}
+
+li.contactus a:hover{
+    background-color: black;
+    color: white;
+    transition: .4s ease-in;
+    cursor: pointer;
+}
+
+h2 {
+    color: white;
+}
+
+p {
+    color: white;
+    align-content: justify;
+}
+
+/* div.cards ul li div.col { */
+display: inline;
+width: 100%;
+justify-content: center;
+align-items: center;
+}
+
+/* ul li.card1 { */
+border: 2px;
+border-color: #0f1626;
+}
+
+div.footer h4 {
+    text-decoration-color: whitesmoke;
+    color: white;
+}

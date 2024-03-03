@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="texttovoicestyle.css">
+    <style>
+        * {
+            margin: -1px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            max-width: 100%;
+            justify-items: center;
+            align-items: center;
+            background-color: #ab987a;
+        }
+
+        .hero {
+
+            background-color: #ab987a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: black;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 45px;
+            font-weight: 500;
+            margin-top: -50px;
+            margin-bottom: 50px;
+            color: black;
+        }
+
+         span {
+            color: chartreuse;
+        }
+
+        textarea {
+            width: 600px;
+            height: 250px;
+            background: #403d84;
+            color: #fff;
+            font-size: 15px;
+            border: 0;
+            outline: 0;
+            padding: 20px;
+            border-radius: 10px;
+            resize: none;
+            margin-bottom: 30px;
+        }
+
+        textarea::placeholder {
+            font-size: 16px;
+            color: #ddd;
+
+        }
+
+        .row {
+            width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+        }
+
+        button {
+            background: black;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 30px;
+            border-radius: 35px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        button img {
+            width: 16px;
+            margin-right: 10px;
+        }
+
+        select {
+            flex: 1;
+            color: #fff;
+            background: black;
+            height: 50px;
+            padding: 0 20px;
+            outline: 0;
+            border: 0;
+            border-radius: 35px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <!-- <input type="checkbox" id="check"> -->
+        <!-- <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label> -->
+
+        <ul>
+            <li class="home"><a href="./index.html">Home</a></li>
+            <li class="dictionary"><a href="./dictionary.html">Dictionary</a></li>
+            <li class="texttovoice"><a href="./texttovoice.html">Text to Voice</a></li>
+            <li class="definition"><a href="./definition.html">Definition</a></li>
+            <li class="singularplural"><a href="./singularplural.html">Singular Plural</a></li>
+            <li class="login"><a href="./login.html">Login</a></li>
+            <li class="signup"><a href="./signup.html">Sign Up</a></li>
+            <li class="contactus"><a href="./contactus.html">Contact Us</a></li>
+        </ul>
+
+    </nav>
+
+    <br><br><br><br><br>
+
+    <center><h1>Text to Listen</h1>
+
+    <div class="hero">
+
+        <br><br>
+        <textarea placeholder="Write Anything Here"></textarea>
+        <div class="row">
+            <select></select>
+            <button><img style="height: 30px; width: 30px;" src="./img/white-play-icon-png-7.jpg">Listen</button>
+        </div>
+    </div>
+
+
+    <br><br><br>
+    <hr>
+
+    <div class="footer">
+    <br>
+
+    
+        <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
+    
+
+    <br>
+
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+
+
+        let voices = [];
+
+        let voiceSelect = document.querySelector("select");
+
+        window.speechSynthesis.onvoiceschanged = () => {
+            voices = window.speechSynthesis.getVoices();
+            speech.voice = voices[0];
+
+            voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)))
+        };
+
+
+        voiceSelect.addEventListener("change", () => {
+            speech.voice = voices[voiceSelect.value];
+        })
+
+
+        document.querySelector("button").addEventListener("click", () => {
+            speech.text = document.querySelector("textarea").value;
+            window.speechSynthesis.speak(speech);
+        });
+    </script>
+</body>
+
+</html>

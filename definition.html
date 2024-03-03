@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Definition Finder</title>
+    <link rel="stylesheet" href="definitionstyle.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff533d;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #definition {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <!-- <input type="checkbox" id="check"> -->
+        <!-- <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label> -->
+
+        <ul>
+            <li class="home"><a href="./index.html">Home</a></li>
+            <li class="dictionary"><a href="./dictionary.html">Dictionary</a></li>
+            <li class="texttovoice"><a href="./texttovoice.html">Text to Voice</a></li>
+            <li class="definition"><a href="./definition.html">Definition</a></li>
+            <li class="singularplural"><a href="./singularplural.html">Singular Plural</a></li>
+            <li class="login"><a href="./login.html">Login</a></li>
+            <li class="signup"><a href="./signup.html">Sign Up</a></li>
+            <li class="contactus"><a href="./contactus.html">Contact Us</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="container">
+        <h1>Word Definition Finder In A One Word</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word...">
+        <button onclick="fetchDefinition()">Search</button>
+        <div id="definition"></div>
+    </div>
+
+
+    
+    
+    <!-- <script src="script.js"></script> -->
+
+    <script>function fetchDefinition() {
+            const word = document.getElementById('wordInput').value.trim();
+            if (word === '') {
+                alert('Please enter a word!');
+                return;
+            }
+
+
+            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+                .then(response => response.json())
+                .then(data => {
+                    const definitionDiv = document.getElementById('definition');
+                    if (data.title === "No Definitions Found") {
+                        definitionDiv.innerHTML = `<p>No definitions found for "${word}". Please try another word.</p>`;
+                    } else {
+                        const meanings = data[0].meanings;
+                        let definitionHTML = `<h2>Definitions for "${word}"</h2>`;
+                        meanings.forEach(meaning => {
+                            definitionHTML += `<p><strong>${meaning.partOfSpeech}:</strong> ${meaning.definitions[0].definition}</p>`;
+                        });
+                        definitionDiv.innerHTML = definitionHTML;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching definition:', error);
+                    alert('An error occurred while fetching the definition. Please try again later.');
+                });
+        }</script>
+
+<br><br><br>
+<hr>
+
+<div class="footer">
+<br>
+
+
+    <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
+
+
+<br>
+
+</body>
+
+</html>

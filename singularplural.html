@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singular to Plural Converter</title>
+    <link rel="stylesheet" href="singularpluralstyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #77c9d4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <!-- <input type="checkbox" id="check"> -->
+        <!-- <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label> -->
+
+        <ul>
+            <li class="home"><a href="./index.html">Home</a></li>
+            <li class="dictionary"><a href="./dictionary.html">Dictionary</a></li>
+            <li class="texttovoice"><a href="./texttovoice.html">Text to Voice</a></li>
+            <li class="definition"><a href="./definition.html">Definition</a></li>
+            <li class="singularplural"><a href="./singularplural.html">Singular Plural</a></li>
+            <li class="login"><a href="./login.html">Login</a></li>
+            <li class="signup"><a href="./signup.html">Sign Up</a></li>
+            <li class="contactus"><a href="./contactus.html">Contact Us</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="container">
+        <h1>Singular to Plural Converter</h1>
+        <input type="text" id="nounInput" placeholder="Enter a singular noun">
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    
+
+    <script>
+        function convert() {
+            const noun = document.getElementById('nounInput').value.trim();
+            if (noun === '') {
+                alert('Please enter a singular noun.');
+                return;
+            }
+
+            const plural = getPlural(noun);
+            document.getElementById('result').innerText = `Plural: ${plural}`;
+        }
+
+        function getPlural(noun) {
+            
+            if (noun.endsWith('s') || noun.endsWith('x') || noun.endsWith('z') || noun.endsWith('ch') || noun.endsWith('sh')) {
+                return noun + 'es';
+            } else if (noun.endsWith('y')) {
+                return noun.slice(0, -1) + 'ies';
+            } else {
+                return noun + 's';
+            }
+        }
+    </script>
+
+<br><br><br>
+    <hr>
+
+    <div class="footer">
+    <br>
+
+    
+        <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
+    
+
+    <br>
+
+
+</body>
+</html>

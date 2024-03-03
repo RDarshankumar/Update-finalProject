@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Dictionary</title>
+
+  <link rel="stylesheet" href="dictionarystyle.css">
+  <style>
+    * {
+    margin: -1px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif
+}
+
+body {
+    min-height: 100vh;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+    width: 100%;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    line-height: 60px;
+    font-weight: bold;
+    justify-items: center;
+    align-items: center;
+    display: fixed;
+    
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: none;
+    background-color: none;
+    width: 100%;
+    /* display: fixed; */
+}
+
+    .container {
+      background-color: rgb(88, 37, 82);
+      padding: 28px;
+      border-radius: 7px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
+      width: 100%;
+      margin: 10px;
+      max-width: 450px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+
+    }
+
+    .heading {
+      font-size: 28px;
+    }
+
+    .input {
+      height: 53px;
+      width: 300px;
+      background-color: rgba(255, 255, 255, .6);
+      border-color: rgba(255, 255, 255, .4);
+      font-size: 16px;
+      padding: 0 42px;
+      border-radius: 5px;
+    }
+
+    .meaning-container {
+      display: none;
+    }
+  </style>
+</head>
+
+<body bgcolor="#f5f5f5">
+
+  <nav>
+    <!-- <input type="checkbox" id="check"> -->
+    <!-- <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+      </label> -->
+
+    <ul>
+      <li class="home"><a href="./index.html">Home</a></li>
+      <li class="dictionary"><a href="./dictionary.html">Dictionary</a></li>
+      <li class="texttovoice"><a href="./texttovoice.html">Text to Voice</a></li>
+      <li class="definition"><a href="./definition.html">Definition</a></li>
+      <li class="singularplural"><a href="./singularplural.html">Singular Plural</a></li>
+      <li class="login"><a href="./login.html">Login</a></li>
+      <li class="signup"><a href="./signup.html">Sign Up</a></li>
+      <li class="contactus"><a href="./contactus.html">Contact Us</a></li>
+    </ul>
+
+  </nav>
+
+  <center><br><br><br><br><br><br>
+
+    <h1>Dictionary</h1>
+
+    <br><br><br><br><br><br>
+
+    <div class="container">
+      <h1 class="heading"> Dictionary in English </h1>
+      <br>
+      <input placeholder="Search a word" type="text" class="input" id="input" />
+      <br><br>
+      <p class="info-text" id="info-text">Type a word and press enter</p>
+      <div class="meaning-container" id="meaning-container">
+        <p>Word Title: <span class="title" id="title">___</span></p>
+        <p>Meaning: <span class="meaning" id="meaning">___</span></p>
+        <audio src="" controls id="audio"></audio>
+      </div>
+    </div>
+
+    <br><br><br>
+    <hr>
+
+    <div class="footer">
+    <br>
+
+    
+        <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
+    
+
+    <br>
+
+    <script>
+      const inputEl = document.getElementById("input");
+      const infoTextEl = document.getElementById("info-text");
+      const meaningContainerEl = document.getElementById("meaning-container");
+      const titleEl = document.getElementById("title");
+      const meaningEl = document.getElementById("meaning");
+      const audioEl = document.getElementById("audio");
+
+      async function fetchAPI(word) {
+        try {
+          infoTextEl.style.display = "block";
+          meaningContainerEl.style.display = "none";
+          infoTextEl.innerText = `Searching the meaning of "${word}"`;
+          const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+          const result = await fetch(url).then((res) => res.json());
+
+          if (result.title) {
+            meaningContainerEl.style.display = "block";
+            infoTextEl.style.display = "none";
+            titleEl.innerText = word;
+            meaningEl.innerText = "N/A";
+            audioEl.style.display = "none";
+          } else {
+            infoTextEl.style.display = "none";
+            meaningContainerEl.style.display = "block";
+            audioEl.style.display = "inline-flex";
+            titleEl.innerText = result[0].word;
+            meaningEl.innerText = result[0].meanings[0].definitions[0].definition;
+            audioEl.src = result[0].phonetics[0].audio;
+          }
+        } catch (error) {
+          console.log(error);
+          infoTextEl.innerText = `an error happened, try again later`;
+        }
+      }
+
+      inputEl.addEventListener("keyup", (e) => {
+        if (e.target.value && e.key === "Enter") {
+          fetchAPI(e.target.value);
+        }
+      });
+    </script>
+</body>
+
+</html>
