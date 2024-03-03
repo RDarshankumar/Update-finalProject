@@ -10,6 +10,7 @@ body {
     max-width: 100%;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 nav ul li {
@@ -175,3 +176,10 @@ border-color: #0f1626;
     background-color: whitesmoke;
     color: white;
 } */
+
+div.class ul a button.btn{
+    background-color: #f5f5f5;
+    margin: 0px 0px;
+    padding: 20px 30px;
+    color: black;
+}
