@@ -73,17 +73,16 @@
 
     <div class="container">
         <h1>Word Definition Finder In A One Word</h1>
+        <br>
         <input type="text" id="wordInput" placeholder="Enter a word...">
         <button onclick="fetchDefinition()">Search</button>
         <div id="definition"></div>
     </div>
 
-
-    
-    
     <!-- <script src="script.js"></script> -->
 
-    <script>function fetchDefinition() {
+    <script>
+        function fetchDefinition() {
             const word = document.getElementById('wordInput').value.trim();
             if (word === '') {
                 alert('Please enter a word!');
@@ -110,20 +109,20 @@
                     console.error('Error fetching definition:', error);
                     alert('An error occurred while fetching the definition. Please try again later.');
                 });
-        }</script>
+        }
+    </script>
 
-<br><br><br>
-<hr>
-
-<div class="footer">
-<br>
-
-
-    <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
-
-
-<br>
+    <br><br><br>
+    <hr>
+    <br>
+    <div class="footer">
+    
+    
+    
+        <center>
+            <p>© 2024 DW Gadgets. All rights reserved.</p>
 
 </body>
+
 
 </html>
