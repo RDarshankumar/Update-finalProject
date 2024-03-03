@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="signupstyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #015249;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <!-- <input type="checkbox" id="check"> -->
+        <!-- <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label> -->
+
+        <ul>
+            <li class="home"><a href="./index.html">Home</a></li>
+            <li class="dictionary"><a href="./dictionary.html">Dictionary</a></li>
+            <li class="texttovoice"><a href="./texttovoice.html">Text to Voice</a></li>
+            <li class="definition"><a href="./definition.html">Definition</a></li>
+            <li class="singularplural"><a href="./singularplural.html">Singular Plural</a></li>
+            <li class="login"><a href="./login.html">Login</a></li>
+            <li class="signup"><a href="./signup.html">Sign Up</a></li>
+            <li class="contactus"><a href="./contactus.html">Contact Us</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="text" id="Email" name="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="Phone">Phone</label>
+                <input type="text" id="Phone" name="Phone" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="./login.html">Login</a></p>
+    </div>
+
+    <br><br><br>
+    <hr>
+
+    <div class="footer">
+    <br>
+
+    
+        <center><h4>© 2024 DW Gadgets. All rights reserved.</h4>
+    
+
+    <br>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    console.log('Login submitted');
+                });
+            }
+
+            if (signupForm) {
+                signupForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    console.log('Signup submitted');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
